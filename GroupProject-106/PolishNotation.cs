@@ -132,6 +132,7 @@ namespace PolishNotation
             return outputSeparated.ToArray();
         }
         
+        
         public double result(string input)
         {
             Dictionary<string, string> constanti = new Dictionary<string, string>()

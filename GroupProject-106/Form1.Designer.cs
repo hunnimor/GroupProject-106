@@ -28,64 +28,344 @@
         /// </summary>
         private void InitializeComponent()
         {
+            pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
-            button1 = new Button();
             textBox3 = new TextBox();
+            textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            panel1 = new Panel();
+            button1 = new Button();
+            button17 = new Button();
+            button16 = new Button();
+            button15 = new Button();
+            button14 = new Button();
+            button13 = new Button();
+            button12 = new Button();
+            button11 = new Button();
+            button10 = new Button();
+            button9 = new Button();
+            button8 = new Button();
+            button7 = new Button();
+            button6 = new Button();
+            button5 = new Button();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.icons8_integral_64;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(19, 75);
+            pictureBox1.Margin = new Padding(4, 2, 4, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(121, 139);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(188, 31);
+            textBox1.Location = new Point(74, 34);
+            textBox1.Margin = new Padding(0);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(361, 39);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBox1.Size = new Size(39, 39);
+            textBox1.TabIndex = 4;
+            textBox1.TextAlign = HorizontalAlignment.Center;
+            textBox1.TextChanged += textBox1_TextChanged_3;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(188, 160);
+            textBox2.Location = new Point(43, 218);
+            textBox2.Margin = new Padding(4, 2, 4, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(361, 39);
-            textBox2.TabIndex = 1;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(573, 32);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 46);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            textBox2.Size = new Size(39, 39);
+            textBox2.TabIndex = 5;
+            textBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(188, 247);
+            textBox3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox3.Location = new Point(100, 102);
+            textBox3.Margin = new Padding(4, 2, 4, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(361, 39);
-            textBox3.TabIndex = 3;
+            textBox3.Size = new Size(1216, 78);
+            textBox3.TabIndex = 6;
+            textBox3.TextChanged += textBox3_TextChanged;
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.Control;
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Enabled = false;
+            textBox4.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox4.Location = new Point(1301, 105);
+            textBox4.Margin = new Padding(4, 2, 4, 2);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(80, 71);
+            textBox4.TabIndex = 7;
+            textBox4.Text = "dx";
+            textBox4.TextAlign = HorizontalAlignment.Center;
+            textBox4.TextChanged += textBox4_TextChanged;
+            // 
+            // textBox5
+            // 
+            textBox5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox5.Location = new Point(225, 555);
+            textBox5.Margin = new Padding(4, 2, 4, 2);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(691, 78);
+            textBox5.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(button17);
+            panel1.Controls.Add(button16);
+            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(button15);
+            panel1.Controls.Add(button14);
+            panel1.Controls.Add(button13);
+            panel1.Controls.Add(button12);
+            panel1.Controls.Add(button11);
+            panel1.Controls.Add(button10);
+            panel1.Controls.Add(button9);
+            panel1.Controls.Add(button8);
+            panel1.Controls.Add(button7);
+            panel1.Controls.Add(button6);
+            panel1.Controls.Add(button5);
+            panel1.Controls.Add(button4);
+            panel1.Controls.Add(button3);
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(textBox2);
+            panel1.Location = new Point(22, 26);
+            panel1.Margin = new Padding(6);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1523, 333);
+            panel1.TabIndex = 10;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(1370, 105);
+            button1.Name = "button1";
+            button1.Size = new Size(123, 75);
+            button1.TabIndex = 26;
+            button1.Text = "=";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_3;
+            // 
+            // button17
+            // 
+            button17.Location = new Point(1142, 165);
+            button17.Margin = new Padding(6);
+            button17.Name = "button17";
+            button17.Size = new Size(149, 49);
+            button17.TabIndex = 25;
+            button17.Text = "Add Const";
+            button17.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            button16.Location = new Point(1066, 165);
+            button16.Margin = new Padding(6);
+            button16.Name = "button16";
+            button16.Size = new Size(65, 49);
+            button16.TabIndex = 24;
+            button16.Text = "E";
+            button16.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            button15.Location = new Point(989, 165);
+            button15.Margin = new Padding(6);
+            button15.Name = "button15";
+            button15.Size = new Size(65, 49);
+            button15.TabIndex = 23;
+            button15.Text = "π";
+            button15.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            button14.Location = new Point(913, 165);
+            button14.Margin = new Padding(6);
+            button14.Name = "button14";
+            button14.Size = new Size(65, 49);
+            button14.TabIndex = 22;
+            button14.Text = "ln";
+            button14.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            button13.Location = new Point(837, 165);
+            button13.Margin = new Padding(6);
+            button13.Name = "button13";
+            button13.Size = new Size(65, 49);
+            button13.TabIndex = 21;
+            button13.Text = "log";
+            button13.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(761, 165);
+            button12.Margin = new Padding(6);
+            button12.Name = "button12";
+            button12.Size = new Size(65, 49);
+            button12.TabIndex = 20;
+            button12.Text = "ctg";
+            button12.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(685, 165);
+            button11.Margin = new Padding(6);
+            button11.Name = "button11";
+            button11.Size = new Size(65, 49);
+            button11.TabIndex = 19;
+            button11.Text = "tg";
+            button11.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(609, 165);
+            button10.Margin = new Padding(6);
+            button10.Name = "button10";
+            button10.Size = new Size(65, 49);
+            button10.TabIndex = 18;
+            button10.Text = "sin";
+            button10.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(533, 165);
+            button9.Margin = new Padding(6);
+            button9.Name = "button9";
+            button9.Size = new Size(65, 49);
+            button9.TabIndex = 17;
+            button9.Text = "cos";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(481, 165);
+            button8.Margin = new Padding(6);
+            button8.Name = "button8";
+            button8.Size = new Size(41, 49);
+            button8.TabIndex = 16;
+            button8.Text = "√";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(429, 165);
+            button7.Margin = new Padding(6);
+            button7.Name = "button7";
+            button7.Size = new Size(41, 49);
+            button7.TabIndex = 15;
+            button7.Text = "^";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(377, 165);
+            button6.Margin = new Padding(6);
+            button6.Name = "button6";
+            button6.Size = new Size(41, 49);
+            button6.TabIndex = 14;
+            button6.Text = "/";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(325, 165);
+            button5.Margin = new Padding(6);
+            button5.Name = "button5";
+            button5.Size = new Size(41, 49);
+            button5.TabIndex = 13;
+            button5.Text = "x";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(273, 165);
+            button4.Margin = new Padding(6);
+            button4.Name = "button4";
+            button4.Size = new Size(41, 49);
+            button4.TabIndex = 12;
+            button4.Text = "-";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(221, 165);
+            button3.Margin = new Padding(6);
+            button3.Name = "button3";
+            button3.Size = new Size(41, 49);
+            button3.TabIndex = 11;
+            button3.Text = "+";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(120, 165);
+            button2.Margin = new Padding(6);
+            button2.Name = "button2";
+            button2.Size = new Size(89, 49);
+            button2.TabIndex = 10;
+            button2.Text = "CLR";
+            button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(textBox3);
-            Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(1560, 819);
+            Controls.Add(panel1);
+            Controls.Add(textBox5);
+            Margin = new Padding(4, 2, 4, 2);
+            MaximizeBox = false;
             Name = "Form1";
-            Text = "Form1";
+            Text = "Integral Calcultor by Pibimpap team";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private PictureBox pictureBox1;
         private TextBox textBox1;
         private TextBox textBox2;
-        private Button button1;
         private TextBox textBox3;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private Panel panel1;
+        private Button button17;
+        private Button button16;
+        private Button button15;
+        private Button button14;
+        private Button button13;
+        private Button button12;
+        private Button button11;
+        private Button button10;
+        private Button button9;
+        private Button button8;
+        private Button button7;
+        private Button button6;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Button button1;
     }
 }
