@@ -18,14 +18,13 @@ namespace GroupProject_106
         {
             PostfixNotationExpression c = new PostfixNotationExpression();
             string text = textBox1.Text;
-
             string result = "";
-            for (int i = 0; i < c.ConvertToPostfixNotation(text).Length; i++)
-            {
-                result += c.ConvertToPostfixNotation(text)[i];
+            foreach (var a in c.ConvertToPostfixNotation(text)){
+                result += a;
                 result += " ";
             }
             textBox2.Text = result;
+            textBox3.Text = c.result(text).ToString();
         }
     }
 }
