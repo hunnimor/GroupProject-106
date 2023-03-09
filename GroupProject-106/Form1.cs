@@ -1,4 +1,4 @@
-using PolishNotation;
+﻿using System.Diagnostics;
 using System.Security.Cryptography;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -11,97 +11,124 @@ namespace GroupProject_106
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void buttonResult_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*
-            //PostfixNotationExpression c = new PostfixNotationExpression();
-            //string text = textBox1.Text;
-            //string result = "";
-            foreach (var a in c.ConvertToPostfixNotation(text))
+            double lower;
+            double hight;
+            if (Double.TryParse(textBoxMin.Text, out lower) && (Double.TryParse(textBoxMax.Text, out hight)))
             {
-                result += a;
-                result += " ";
+                Quadrature integr = new Quadrature(textBoxIntegral.Text);
+                var sw = new Stopwatch();
+                sw.Start();
+                textBoxResult.Text = integr.romberg(lower, hight, 0.00001, 1, 4).ToString();
+                sw.Stop();
+                textBoxTime.Text = sw.ElapsedMilliseconds.ToString() + " ms";
             }
-            textBox2.Text = result;
-            //textBox3.Text = c.result(text).ToString();
-            */
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            PostfixNotationExpression c = new PostfixNotationExpression();
-            string text = textBox3.Text;
-            string result = "";
-            foreach (var a in c.ConvertToPostfixNotation(text))
+            else
             {
-                result += a;
-                result += " ";
+                MessageBox.Show(
+                    "Пределы интегрирования указаны не верно!",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-            //textBox5.Text = result;
-            textBox5.Text = c.result(text).ToString();
+        }
+        public string returnFunc()
+        {
+            return textBoxIntegral.Text;
         }
 
-        private void textBox1_TextChanged_3(object sender, EventArgs e)
+        private void textBoxMax_KeyPress(object sender, KeyPressEventArgs e)
         {
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_3(object sender, EventArgs e)
-        {
-            PostfixNotationExpression c = new PostfixNotationExpression();
-            string text = textBox3.Text;
-            string result = "";
-            foreach (var a in c.ConvertToPostfixNotation(text))
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 46 && number != 45)
             {
-                result += a;
-                result += " ";
+                e.Handled = true;
             }
-            //textBox5.Text = result;
-            textBox5.Text = c.result(text).ToString();
+        }
+
+        private void textBoxMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 46 && number != 45)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void buttonCLR_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text = "";
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += '+';
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += '-';
+        }
+
+        private void buttonUmnoj_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += '*';
+        }
+
+        private void buttonDel_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += '/';
+        }
+
+        private void buttonStepen_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += '^';
+        }
+
+        private void buttonSqrt_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "sqrt(";
+        }
+
+        private void buttonCos_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "cos(";
+        }
+
+        private void buttonSin_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "sin(";
+        }
+
+        private void buttonTg_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "tg(";
+        }
+
+        private void buttonCtg_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "ctg(";
+        }
+
+        private void buttonLog_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "log(";
+        }
+
+        private void buttonLn_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "ln(";
+        }
+
+        private void buttonPi_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "Pi";
+        }
+
+        private void buttonE_Click(object sender, EventArgs e)
+        {
+            textBoxIntegral.Text += "E";
         }
     }
 }

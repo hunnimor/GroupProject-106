@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PolishNotation
+namespace GroupProject_106
 {
     public class PostfixNotationExpression
     {
@@ -14,7 +14,7 @@ namespace PolishNotation
         private List<string> standart_operators =
             new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "cos", "sin", "tg", "ctg", "ln", "log", "sqrt"});
 
-        public List<string> Separate(string input)
+        public List<string> Separate(string input, double x)
         {
             List<string> arr = new List<string>();
             int pos = 0;
@@ -62,6 +62,22 @@ namespace PolishNotation
                     arr.Add(s);
                 }
             }
+            Dictionary<string, string> constanti = new Dictionary<string, string>()
+            {
+                {"E", (Math.E).ToString()},
+                {"Pi", (Math.PI).ToString()},
+                {"x",  x.ToString()}
+            };
+            foreach (var c in constanti)
+            {
+                for (int i = 0; i < arr.Count; i++)
+                {
+                    if (c.Key == arr[i])
+                    {
+                        arr[i] = c.Value;
+                    }
+                }
+            }
             return arr;
         }
         private byte GetPriority(string s)
@@ -91,11 +107,11 @@ namespace PolishNotation
             }
         }
 
-        public string[] ConvertToPostfixNotation(string input)
+        public string[] ConvertToPostfixNotation(string input, double x)
         {
             List<string> outputSeparated = new List<string>();
             Stack<string> stack = new Stack<string>();
-            foreach (string c in Separate(input))
+            foreach (string c in Separate(input, x))
             {
                 if (operators.Contains(c))
                 {
@@ -131,21 +147,12 @@ namespace PolishNotation
 
             return outputSeparated.ToArray();
         }
-        
-        
-        public double result(string input)
+
+
+        public double result(string input, double x)
         {
-            Dictionary<string, string> constanti = new Dictionary<string, string>()
-            {
-                {"E", (Math.E).ToString()},
-                {"Pi", (Math.PI).ToString()}
-            };
-            foreach (var c in constanti)
-            {
-                input = input.Replace(c.Key, c.Value);
-            }
             Stack<string> stack = new Stack<string>();
-            Queue<string> queue = new Queue<string>(ConvertToPostfixNotation(input));
+            Queue<string> queue = new Queue<string>(ConvertToPostfixNotation(input, x));
             string str = queue.Dequeue();
             while (queue.Count >= 0)
             {
@@ -258,6 +265,6 @@ namespace PolishNotation
             }
             return Convert.ToDouble(stack.Pop());
         }
-        
+
     }
 }

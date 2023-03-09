@@ -29,142 +29,153 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            textBoxMax = new TextBox();
+            textBoxMin = new TextBox();
+            textBoxIntegral = new TextBox();
             textBox4 = new TextBox();
-            textBox5 = new TextBox();
             panel1 = new Panel();
-            button1 = new Button();
+            textBox6 = new TextBox();
+            buttonResult = new Button();
             button17 = new Button();
-            button16 = new Button();
-            button15 = new Button();
-            button14 = new Button();
-            button13 = new Button();
-            button12 = new Button();
-            button11 = new Button();
-            button10 = new Button();
-            button9 = new Button();
-            button8 = new Button();
-            button7 = new Button();
-            button6 = new Button();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
+            buttonE = new Button();
+            buttonPi = new Button();
+            buttonLn = new Button();
+            buttonLog = new Button();
+            buttonCtg = new Button();
+            buttonTg = new Button();
+            buttonSin = new Button();
+            buttonCos = new Button();
+            buttonSqrt = new Button();
+            buttonStepen = new Button();
+            buttonDel = new Button();
+            buttonUmnoj = new Button();
+            buttonMinus = new Button();
+            buttonPlus = new Button();
+            buttonCLR = new Button();
+            panel2 = new Panel();
+            textBoxTime = new TextBox();
+            textBoxResult = new TextBox();
+            textBox8 = new TextBox();
+            textBox7 = new TextBox();
+            textBox5 = new TextBox();
+            textBoxFunc = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Properties.Resources.icons8_integral_64;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(19, 75);
+            pictureBox1.Location = new Point(22, 133);
             pictureBox1.Margin = new Padding(4, 2, 4, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(121, 139);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // textBoxMax
             // 
-            textBox1.Location = new Point(74, 34);
-            textBox1.Margin = new Padding(0);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(39, 39);
-            textBox1.TabIndex = 4;
-            textBox1.TextAlign = HorizontalAlignment.Center;
-            textBox1.TextChanged += textBox1_TextChanged_3;
+            textBoxMax.Location = new Point(65, 92);
+            textBoxMax.Margin = new Padding(0);
+            textBoxMax.Name = "textBoxMax";
+            textBoxMax.Size = new Size(66, 39);
+            textBoxMax.TabIndex = 4;
+            textBoxMax.KeyPress += textBoxMax_KeyPress;
             // 
-            // textBox2
+            // textBoxMin
             // 
-            textBox2.Location = new Point(43, 218);
-            textBox2.Margin = new Padding(4, 2, 4, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(39, 39);
-            textBox2.TabIndex = 5;
-            textBox2.TextAlign = HorizontalAlignment.Center;
+            textBoxMin.Location = new Point(26, 265);
+            textBoxMin.Margin = new Padding(4, 2, 4, 2);
+            textBoxMin.Name = "textBoxMin";
+            textBoxMin.Size = new Size(66, 39);
+            textBoxMin.TabIndex = 5;
+            textBoxMin.KeyPress += textBoxMin_KeyPress;
             // 
-            // textBox3
+            // textBoxIntegral
             // 
-            textBox3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(100, 102);
-            textBox3.Margin = new Padding(4, 2, 4, 2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(1216, 78);
-            textBox3.TabIndex = 6;
-            textBox3.TextChanged += textBox3_TextChanged;
+            textBoxIntegral.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxIntegral.Location = new Point(103, 160);
+            textBoxIntegral.Margin = new Padding(4, 2, 4, 2);
+            textBoxIntegral.Name = "textBoxIntegral";
+            textBoxIntegral.Size = new Size(1216, 78);
+            textBoxIntegral.TabIndex = 6;
             // 
             // textBox4
             // 
             textBox4.BackColor = SystemColors.Control;
             textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Enabled = false;
             textBox4.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(1301, 105);
+            textBox4.Location = new Point(1304, 163);
             textBox4.Margin = new Padding(4, 2, 4, 2);
             textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
             textBox4.Size = new Size(80, 71);
             textBox4.TabIndex = 7;
             textBox4.Text = "dx";
             textBox4.TextAlign = HorizontalAlignment.Center;
-            textBox4.TextChanged += textBox4_TextChanged;
-            // 
-            // textBox5
-            // 
-            textBox5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.Location = new Point(225, 555);
-            textBox5.Margin = new Padding(4, 2, 4, 2);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(691, 78);
-            textBox5.TabIndex = 8;
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.Control;
+            panel1.BackgroundImageLayout = ImageLayout.None;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(textBox6);
+            panel1.Controls.Add(buttonResult);
+            panel1.Controls.Add(textBoxIntegral);
             panel1.Controls.Add(button17);
-            panel1.Controls.Add(button16);
+            panel1.Controls.Add(buttonE);
             panel1.Controls.Add(textBox4);
-            panel1.Controls.Add(button15);
-            panel1.Controls.Add(button14);
-            panel1.Controls.Add(button13);
-            panel1.Controls.Add(button12);
-            panel1.Controls.Add(button11);
-            panel1.Controls.Add(button10);
-            panel1.Controls.Add(button9);
-            panel1.Controls.Add(button8);
-            panel1.Controls.Add(button7);
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(button5);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(buttonPi);
+            panel1.Controls.Add(buttonLn);
+            panel1.Controls.Add(buttonLog);
+            panel1.Controls.Add(buttonCtg);
+            panel1.Controls.Add(buttonTg);
+            panel1.Controls.Add(buttonSin);
+            panel1.Controls.Add(buttonCos);
+            panel1.Controls.Add(buttonSqrt);
+            panel1.Controls.Add(buttonStepen);
+            panel1.Controls.Add(buttonDel);
+            panel1.Controls.Add(buttonUmnoj);
+            panel1.Controls.Add(buttonMinus);
+            panel1.Controls.Add(buttonPlus);
+            panel1.Controls.Add(buttonCLR);
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(textBoxMax);
+            panel1.Controls.Add(textBoxMin);
             panel1.Location = new Point(22, 26);
             panel1.Margin = new Padding(6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1523, 333);
+            panel1.Size = new Size(1523, 367);
             panel1.TabIndex = 10;
             // 
-            // button1
+            // textBox6
             // 
-            button1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(1370, 105);
-            button1.Name = "button1";
-            button1.Size = new Size(123, 75);
-            button1.TabIndex = 26;
-            button1.Text = "=";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_3;
+            textBox6.BackColor = SystemColors.Control;
+            textBox6.BorderStyle = BorderStyle.None;
+            textBox6.Font = new Font("Microsoft Sans Serif", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox6.Location = new Point(19, 13);
+            textBox6.Name = "textBox6";
+            textBox6.ReadOnly = true;
+            textBox6.Size = new Size(536, 76);
+            textBox6.TabIndex = 27;
+            textBox6.Text = "Интеграл:";
+            // 
+            // buttonResult
+            // 
+            buttonResult.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonResult.Location = new Point(1373, 163);
+            buttonResult.Name = "buttonResult";
+            buttonResult.Size = new Size(123, 75);
+            buttonResult.TabIndex = 26;
+            buttonResult.Text = "=";
+            buttonResult.UseVisualStyleBackColor = true;
+            buttonResult.Click += buttonResult_Click;
             // 
             // button17
             // 
-            button17.Location = new Point(1142, 165);
+            button17.Location = new Point(1145, 223);
             button17.Margin = new Padding(6);
             button17.Name = "button17";
             button17.Size = new Size(149, 49);
@@ -172,164 +183,254 @@
             button17.Text = "Add Const";
             button17.UseVisualStyleBackColor = true;
             // 
-            // button16
+            // buttonE
             // 
-            button16.Location = new Point(1066, 165);
-            button16.Margin = new Padding(6);
-            button16.Name = "button16";
-            button16.Size = new Size(65, 49);
-            button16.TabIndex = 24;
-            button16.Text = "E";
-            button16.UseVisualStyleBackColor = true;
+            buttonE.Location = new Point(1069, 223);
+            buttonE.Margin = new Padding(6);
+            buttonE.Name = "buttonE";
+            buttonE.Size = new Size(65, 49);
+            buttonE.TabIndex = 24;
+            buttonE.Text = "E";
+            buttonE.UseVisualStyleBackColor = true;
+            buttonE.Click += buttonE_Click;
             // 
-            // button15
+            // buttonPi
             // 
-            button15.Location = new Point(989, 165);
-            button15.Margin = new Padding(6);
-            button15.Name = "button15";
-            button15.Size = new Size(65, 49);
-            button15.TabIndex = 23;
-            button15.Text = "π";
-            button15.UseVisualStyleBackColor = true;
+            buttonPi.Location = new Point(992, 223);
+            buttonPi.Margin = new Padding(6);
+            buttonPi.Name = "buttonPi";
+            buttonPi.Size = new Size(65, 49);
+            buttonPi.TabIndex = 23;
+            buttonPi.Text = "π";
+            buttonPi.UseVisualStyleBackColor = true;
+            buttonPi.Click += buttonPi_Click;
             // 
-            // button14
+            // buttonLn
             // 
-            button14.Location = new Point(913, 165);
-            button14.Margin = new Padding(6);
-            button14.Name = "button14";
-            button14.Size = new Size(65, 49);
-            button14.TabIndex = 22;
-            button14.Text = "ln";
-            button14.UseVisualStyleBackColor = true;
+            buttonLn.Location = new Point(916, 223);
+            buttonLn.Margin = new Padding(6);
+            buttonLn.Name = "buttonLn";
+            buttonLn.Size = new Size(65, 49);
+            buttonLn.TabIndex = 22;
+            buttonLn.Text = "ln";
+            buttonLn.UseVisualStyleBackColor = true;
+            buttonLn.Click += buttonLn_Click;
             // 
-            // button13
+            // buttonLog
             // 
-            button13.Location = new Point(837, 165);
-            button13.Margin = new Padding(6);
-            button13.Name = "button13";
-            button13.Size = new Size(65, 49);
-            button13.TabIndex = 21;
-            button13.Text = "log";
-            button13.UseVisualStyleBackColor = true;
+            buttonLog.Location = new Point(840, 223);
+            buttonLog.Margin = new Padding(6);
+            buttonLog.Name = "buttonLog";
+            buttonLog.Size = new Size(65, 49);
+            buttonLog.TabIndex = 21;
+            buttonLog.Text = "log";
+            buttonLog.UseVisualStyleBackColor = true;
+            buttonLog.Click += buttonLog_Click;
             // 
-            // button12
+            // buttonCtg
             // 
-            button12.Location = new Point(761, 165);
-            button12.Margin = new Padding(6);
-            button12.Name = "button12";
-            button12.Size = new Size(65, 49);
-            button12.TabIndex = 20;
-            button12.Text = "ctg";
-            button12.UseVisualStyleBackColor = true;
+            buttonCtg.Location = new Point(764, 223);
+            buttonCtg.Margin = new Padding(6);
+            buttonCtg.Name = "buttonCtg";
+            buttonCtg.Size = new Size(65, 49);
+            buttonCtg.TabIndex = 20;
+            buttonCtg.Text = "ctg";
+            buttonCtg.UseVisualStyleBackColor = true;
+            buttonCtg.Click += buttonCtg_Click;
             // 
-            // button11
+            // buttonTg
             // 
-            button11.Location = new Point(685, 165);
-            button11.Margin = new Padding(6);
-            button11.Name = "button11";
-            button11.Size = new Size(65, 49);
-            button11.TabIndex = 19;
-            button11.Text = "tg";
-            button11.UseVisualStyleBackColor = true;
+            buttonTg.Location = new Point(688, 223);
+            buttonTg.Margin = new Padding(6);
+            buttonTg.Name = "buttonTg";
+            buttonTg.Size = new Size(65, 49);
+            buttonTg.TabIndex = 19;
+            buttonTg.Text = "tg";
+            buttonTg.UseVisualStyleBackColor = true;
+            buttonTg.Click += buttonTg_Click;
             // 
-            // button10
+            // buttonSin
             // 
-            button10.Location = new Point(609, 165);
-            button10.Margin = new Padding(6);
-            button10.Name = "button10";
-            button10.Size = new Size(65, 49);
-            button10.TabIndex = 18;
-            button10.Text = "sin";
-            button10.UseVisualStyleBackColor = true;
+            buttonSin.Location = new Point(612, 223);
+            buttonSin.Margin = new Padding(6);
+            buttonSin.Name = "buttonSin";
+            buttonSin.Size = new Size(65, 49);
+            buttonSin.TabIndex = 18;
+            buttonSin.Text = "sin";
+            buttonSin.UseVisualStyleBackColor = true;
+            buttonSin.Click += buttonSin_Click;
             // 
-            // button9
+            // buttonCos
             // 
-            button9.Location = new Point(533, 165);
-            button9.Margin = new Padding(6);
-            button9.Name = "button9";
-            button9.Size = new Size(65, 49);
-            button9.TabIndex = 17;
-            button9.Text = "cos";
-            button9.UseVisualStyleBackColor = true;
+            buttonCos.Location = new Point(536, 223);
+            buttonCos.Margin = new Padding(6);
+            buttonCos.Name = "buttonCos";
+            buttonCos.Size = new Size(65, 49);
+            buttonCos.TabIndex = 17;
+            buttonCos.Text = "cos";
+            buttonCos.UseVisualStyleBackColor = true;
+            buttonCos.Click += buttonCos_Click;
             // 
-            // button8
+            // buttonSqrt
             // 
-            button8.Location = new Point(481, 165);
-            button8.Margin = new Padding(6);
-            button8.Name = "button8";
-            button8.Size = new Size(41, 49);
-            button8.TabIndex = 16;
-            button8.Text = "√";
-            button8.UseVisualStyleBackColor = true;
+            buttonSqrt.Location = new Point(484, 223);
+            buttonSqrt.Margin = new Padding(6);
+            buttonSqrt.Name = "buttonSqrt";
+            buttonSqrt.Size = new Size(41, 49);
+            buttonSqrt.TabIndex = 16;
+            buttonSqrt.Text = "√";
+            buttonSqrt.UseVisualStyleBackColor = true;
+            buttonSqrt.Click += buttonSqrt_Click;
             // 
-            // button7
+            // buttonStepen
             // 
-            button7.Location = new Point(429, 165);
-            button7.Margin = new Padding(6);
-            button7.Name = "button7";
-            button7.Size = new Size(41, 49);
-            button7.TabIndex = 15;
-            button7.Text = "^";
-            button7.UseVisualStyleBackColor = true;
+            buttonStepen.Location = new Point(432, 223);
+            buttonStepen.Margin = new Padding(6);
+            buttonStepen.Name = "buttonStepen";
+            buttonStepen.Size = new Size(41, 49);
+            buttonStepen.TabIndex = 15;
+            buttonStepen.Text = "^";
+            buttonStepen.UseVisualStyleBackColor = true;
+            buttonStepen.Click += buttonStepen_Click;
             // 
-            // button6
+            // buttonDel
             // 
-            button6.Location = new Point(377, 165);
-            button6.Margin = new Padding(6);
-            button6.Name = "button6";
-            button6.Size = new Size(41, 49);
-            button6.TabIndex = 14;
-            button6.Text = "/";
-            button6.UseVisualStyleBackColor = true;
+            buttonDel.Location = new Point(380, 223);
+            buttonDel.Margin = new Padding(6);
+            buttonDel.Name = "buttonDel";
+            buttonDel.Size = new Size(41, 49);
+            buttonDel.TabIndex = 14;
+            buttonDel.Text = "/";
+            buttonDel.UseVisualStyleBackColor = true;
+            buttonDel.Click += buttonDel_Click;
             // 
-            // button5
+            // buttonUmnoj
             // 
-            button5.Location = new Point(325, 165);
-            button5.Margin = new Padding(6);
-            button5.Name = "button5";
-            button5.Size = new Size(41, 49);
-            button5.TabIndex = 13;
-            button5.Text = "x";
-            button5.UseVisualStyleBackColor = true;
+            buttonUmnoj.Location = new Point(328, 223);
+            buttonUmnoj.Margin = new Padding(6);
+            buttonUmnoj.Name = "buttonUmnoj";
+            buttonUmnoj.Size = new Size(41, 49);
+            buttonUmnoj.TabIndex = 13;
+            buttonUmnoj.Text = "x";
+            buttonUmnoj.UseVisualStyleBackColor = true;
+            buttonUmnoj.Click += buttonUmnoj_Click;
             // 
-            // button4
+            // buttonMinus
             // 
-            button4.Location = new Point(273, 165);
-            button4.Margin = new Padding(6);
-            button4.Name = "button4";
-            button4.Size = new Size(41, 49);
-            button4.TabIndex = 12;
-            button4.Text = "-";
-            button4.UseVisualStyleBackColor = true;
+            buttonMinus.Location = new Point(276, 223);
+            buttonMinus.Margin = new Padding(6);
+            buttonMinus.Name = "buttonMinus";
+            buttonMinus.Size = new Size(41, 49);
+            buttonMinus.TabIndex = 12;
+            buttonMinus.Text = "-";
+            buttonMinus.UseVisualStyleBackColor = true;
+            buttonMinus.Click += buttonMinus_Click;
             // 
-            // button3
+            // buttonPlus
             // 
-            button3.Location = new Point(221, 165);
-            button3.Margin = new Padding(6);
-            button3.Name = "button3";
-            button3.Size = new Size(41, 49);
-            button3.TabIndex = 11;
-            button3.Text = "+";
-            button3.UseVisualStyleBackColor = true;
+            buttonPlus.Location = new Point(224, 223);
+            buttonPlus.Margin = new Padding(6);
+            buttonPlus.Name = "buttonPlus";
+            buttonPlus.Size = new Size(41, 49);
+            buttonPlus.TabIndex = 11;
+            buttonPlus.Text = "+";
+            buttonPlus.UseVisualStyleBackColor = true;
+            buttonPlus.Click += buttonPlus_Click;
             // 
-            // button2
+            // buttonCLR
             // 
-            button2.Location = new Point(120, 165);
-            button2.Margin = new Padding(6);
-            button2.Name = "button2";
-            button2.Size = new Size(89, 49);
-            button2.TabIndex = 10;
-            button2.Text = "CLR";
-            button2.UseVisualStyleBackColor = true;
+            buttonCLR.Location = new Point(123, 223);
+            buttonCLR.Margin = new Padding(6);
+            buttonCLR.Name = "buttonCLR";
+            buttonCLR.Size = new Size(89, 49);
+            buttonCLR.TabIndex = 10;
+            buttonCLR.Text = "CLR";
+            buttonCLR.UseVisualStyleBackColor = true;
+            buttonCLR.Click += buttonCLR_Click;
+            // 
+            // panel2
+            // 
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(textBoxFunc);
+            panel2.Controls.Add(textBoxTime);
+            panel2.Controls.Add(textBoxResult);
+            panel2.Controls.Add(textBox8);
+            panel2.Controls.Add(textBox7);
+            panel2.Controls.Add(textBox5);
+            panel2.Location = new Point(25, 412);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1523, 242);
+            panel2.TabIndex = 11;
+            // 
+            // textBoxTime
+            // 
+            textBoxTime.BackColor = SystemColors.Window;
+            textBoxTime.Location = new Point(247, 147);
+            textBoxTime.Name = "textBoxTime";
+            textBoxTime.ReadOnly = true;
+            textBoxTime.Size = new Size(326, 39);
+            textBoxTime.TabIndex = 4;
+            // 
+            // textBoxResult
+            // 
+            textBoxResult.BackColor = SystemColors.Window;
+            textBoxResult.Location = new Point(104, 99);
+            textBoxResult.Name = "textBoxResult";
+            textBoxResult.ReadOnly = true;
+            textBoxResult.Size = new Size(469, 39);
+            textBoxResult.TabIndex = 3;
+            // 
+            // textBox8
+            // 
+            textBox8.BackColor = SystemColors.Control;
+            textBox8.BorderStyle = BorderStyle.None;
+            textBox8.Location = new Point(23, 147);
+            textBox8.Name = "textBox8";
+            textBox8.ReadOnly = true;
+            textBox8.Size = new Size(243, 32);
+            textBox8.TabIndex = 2;
+            textBox8.Text = "Время вычисления:";
+            // 
+            // textBox7
+            // 
+            textBox7.BackColor = SystemColors.Control;
+            textBox7.BorderStyle = BorderStyle.None;
+            textBox7.Location = new Point(23, 102);
+            textBox7.Name = "textBox7";
+            textBox7.ReadOnly = true;
+            textBox7.Size = new Size(175, 32);
+            textBox7.TabIndex = 1;
+            textBox7.Text = "Ответ:";
+            // 
+            // textBox5
+            // 
+            textBox5.BackColor = SystemColors.Control;
+            textBox5.BorderStyle = BorderStyle.None;
+            textBox5.Font = new Font("Microsoft Sans Serif", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox5.Location = new Point(20, 20);
+            textBox5.Name = "textBox5";
+            textBox5.ReadOnly = true;
+            textBox5.Size = new Size(536, 76);
+            textBox5.TabIndex = 0;
+            textBox5.Text = "Результат:";
+            // 
+            // textBoxFunc
+            // 
+            textBoxFunc.BackColor = SystemColors.Window;
+            textBoxFunc.Location = new Point(562, 33);
+            textBoxFunc.Name = "textBoxFunc";
+            textBoxFunc.ReadOnly = true;
+            textBoxFunc.Size = new Size(469, 39);
+            textBoxFunc.TabIndex = 5;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1560, 819);
+            ClientSize = new Size(1560, 665);
             Controls.Add(panel1);
-            Controls.Add(textBox5);
+            Controls.Add(panel2);
             Margin = new Padding(4, 2, 4, 2);
             MaximizeBox = false;
             Name = "Form1";
@@ -337,35 +438,43 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox textBoxMax;
+        private TextBox textBoxMin;
         private TextBox textBox4;
-        private TextBox textBox5;
         private Panel panel1;
         private Button button17;
-        private Button button16;
-        private Button button15;
-        private Button button14;
-        private Button button13;
-        private Button button12;
-        private Button button11;
-        private Button button10;
-        private Button button9;
-        private Button button8;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button buttonE;
+        private Button buttonPi;
+        private Button buttonLn;
+        private Button buttonLog;
+        private Button buttonCtg;
+        private Button buttonTg;
+        private Button buttonSin;
+        private Button buttonCos;
+        private Button buttonSqrt;
+        private Button buttonStepen;
+        private Button buttonDel;
+        private Button buttonUmnoj;
+        private Button buttonMinus;
+        private Button buttonPlus;
+        private Button buttonCLR;
+        private Button buttonResult;
+        public TextBox textBoxIntegral;
+        private TextBox textBox6;
+        private Panel panel2;
+        private TextBox textBox8;
+        private TextBox textBox7;
+        private TextBox textBox5;
+        private TextBox textBoxTime;
+        private TextBox textBoxResult;
+        private TextBox textBoxFunc;
     }
 }

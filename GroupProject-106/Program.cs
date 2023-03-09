@@ -1,5 +1,3 @@
-using PolishNotation;
-
 namespace GroupProject_106
 {
     internal static class Program
