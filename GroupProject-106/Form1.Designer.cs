@@ -58,7 +58,6 @@
             textBox8 = new TextBox();
             textBox7 = new TextBox();
             textBox5 = new TextBox();
-            textBoxFunc = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -351,7 +350,6 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(textBoxFunc);
             panel2.Controls.Add(textBoxTime);
             panel2.Controls.Add(textBoxResult);
             panel2.Controls.Add(textBox8);
@@ -414,15 +412,6 @@
             textBox5.TabIndex = 0;
             textBox5.Text = "Результат:";
             // 
-            // textBoxFunc
-            // 
-            textBoxFunc.BackColor = SystemColors.Window;
-            textBoxFunc.Location = new Point(562, 33);
-            textBoxFunc.Name = "textBoxFunc";
-            textBoxFunc.ReadOnly = true;
-            textBoxFunc.Size = new Size(469, 39);
-            textBoxFunc.TabIndex = 5;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -475,6 +464,5 @@
         private TextBox textBox5;
         private TextBox textBoxTime;
         private TextBox textBoxResult;
-        private TextBox textBoxFunc;
     }
 }

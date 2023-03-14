@@ -12,7 +12,7 @@ namespace GroupProject_106
         }
         private List<string> operators;
         private List<string> standart_operators =
-            new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "cos", "sin", "tg", "ctg", "ln", "log", "sqrt"});
+            new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "cos", "sin", "tg", "ctg", "ln", "log", "sqrt", "arcsin", "arccos", "arctg", "arcctg"});
 
         public List<string> Separate(string input, double x)
         {
@@ -66,7 +66,8 @@ namespace GroupProject_106
             {
                 {"E", (Math.E).ToString()},
                 {"Pi", (Math.PI).ToString()},
-                {"x",  x.ToString()}
+                {"x",  x.ToString()},
+                {"-x", '-'+x.ToString()}
             };
             foreach (var c in constanti)
             {
@@ -101,6 +102,10 @@ namespace GroupProject_106
                 case "ln":
                 case "log":
                 case "sqrt":
+                case "arcsin":
+                case "arccos":
+                case "arctg":
+                case "arcctg":
                     return 3;
                 default:
                     return 4;
@@ -195,8 +200,10 @@ namespace GroupProject_106
                                 {
                                     double a = Convert.ToDouble(stack.Pop());
                                     double b = Convert.ToDouble(stack.Pop());
-                                    summ = b / a;
+                                    if (a == 0) summ = 0;
+                                    else summ = b / a;
                                     break;
+                                   
                                 }
                             case "^":
                                 {
@@ -248,6 +255,37 @@ namespace GroupProject_106
                                     summ = Math.Sqrt(a);
                                     break;
                                 }
+                            case "arcsin":
+                                {
+                                    double a = Convert.ToDouble(stack.Pop());
+                                    summ = Math.Asin(a);
+                                    break;
+                                }
+                            case "arccos":
+                                {
+                                    double a = Convert.ToDouble(stack.Pop());
+                                    summ = Math.Acos(a);
+                                    break;
+                                }
+                            case "arctg":
+                                {
+                                    double a = Convert.ToDouble(stack.Pop());
+                                    summ = Math.Atan(a);
+                                    break;
+                                }
+                            case "arcctg":
+                                {
+                                    double a = Convert.ToDouble(stack.Pop());
+                                    if (a >= 0)
+                                    {
+                                        return Math.Atan(1 / Math.Sqrt(1 + Math.Pow(x, 2)));
+                                    }
+                                    else
+                                    {
+                                        return Math.PI-Math.Atan(1 / Math.Sqrt(1 + Math.Pow(x, 2)));
+                                    }
+                                    break;
+                                }
                         }
                     }
                     catch (Exception ex)
@@ -265,6 +303,5 @@ namespace GroupProject_106
             }
             return Convert.ToDouble(stack.Pop());
         }
-
     }
 }

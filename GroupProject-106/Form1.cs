@@ -20,9 +20,22 @@ namespace GroupProject_106
                 Quadrature integr = new Quadrature(textBoxIntegral.Text);
                 var sw = new Stopwatch();
                 sw.Start();
-                textBoxResult.Text = integr.romberg(lower, hight, 0.00001, 1, 4).ToString();
+                string result = integr.romberg(lower, hight, 0.01, 1, 4).ToString();
+                
                 sw.Stop();
-                textBoxTime.Text = sw.ElapsedMilliseconds.ToString() + " ms";
+                if (result == "NaN")
+                {
+                    MessageBox.Show(
+                    "Пределы интегрирования указаны не верно!",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+                else
+                {
+                    textBoxResult.Text = result;
+                    textBoxTime.Text = sw.ElapsedMilliseconds.ToString() + " ms";
+                }
             }
             else
             {
