@@ -17,6 +17,46 @@ namespace GroupProject_106
             double hight;
             if (Double.TryParse(textBoxMin.Text, out lower) && (Double.TryParse(textBoxMax.Text, out hight)))
             {
+                List<string> listConstantSign = new List<string>() { "*", "-", "+", "^"};
+                List<string> listConstantFunctions = new List<string>() { "arcsin", "arccos", "arctg", "arcctg", "sqrt", "cos", "sin", "tg", "ctg", "ln", "log"};
+                string checkToSign = textBoxIntegral.Text;
+                // проверка на корректность ввода знаков оперции
+                for(int i = 0; i < listConstantSign.Count; i++)
+                {
+                    checkToSign = checkToSign.Replace(listConstantSign[i], "@");
+                }
+                if (checkToSign.Contains("@@"))
+                {
+                    MessageBox.Show(
+                    "Знаки операций введены не верно",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+
+                //проверка на скобки
+                brackets br = new brackets(Text);
+                var resId = br.CorrectBrackets();
+
+                //проверка на кореектность ввода функций и переменных
+                foreach (string s in listConstantFunctions)
+                {
+                    string[] intermediateCheck = checkToSign.Split("@");
+                    foreach (string s2 in intermediateCheck)
+                    {
+                        if (s2.IndexOf(s) != 0 && s2.IndexOf(s) != -1 && s2[s2.IndexOf(s) - 1].ToString() != "(")
+                        {
+                            MessageBox.Show(
+                            "Знаки операции введены не верно",
+                            "Ошибка",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                //конец проверок
+
+
                 Quadrature integr = new Quadrature(textBoxIntegral.Text);
                 var sw = new Stopwatch();
                 sw.Start();
