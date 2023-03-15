@@ -41,22 +41,24 @@
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(12, 82);
+            pictureBox1.Location = new Point(20, 131);
+            pictureBox1.Margin = new Padding(5, 5, 5, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(876, 223);
+            pictureBox1.Size = new Size(1424, 357);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Copperplate Gothic Bold", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlLight;
-            label1.Location = new Point(107, 350);
+            label1.Location = new Point(174, 560);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(707, 53);
+            label1.Size = new Size(957, 86);
             label1.TabIndex = 1;
-            label1.Text = "Made by Bibimbap_Studios";
+            label1.Text = "Made by Pibimbap_Studios";
             label1.Click += label1_Click;
             // 
             // label2
@@ -64,9 +66,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(419, 348);
+            label2.Location = new Point(681, 557);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(0, 24);
+            label2.Size = new Size(0, 39);
             label2.TabIndex = 2;
             // 
             // timer1
@@ -76,15 +79,16 @@
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(900, 600);
+            ClientSize = new Size(1462, 960);
             ControlBox = false;
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";

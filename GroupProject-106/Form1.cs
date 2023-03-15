@@ -158,5 +158,53 @@ namespace GroupProject_106
         {
 
         }
+
+        private void оНасToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+            "Pibimpap_Studios была основана две недели назад, для выполнения командного проекта по ООП. \n\n" +
+            "Наша компания cовсем новая, но ее штат растет с невероятной скоростью и насчитывает на данный момент 6 человек.\n\n" +
+            "Pibimpap_Studios cпециализируется на разработке математического ПО и телеграм ботах.\n\n" +
+            "При возникновение каких-либо проблем/ошибок можете связаться с нами:\n" +
+            "tg: @le10uch\n" +
+            "mail: mirzagitv03@gmail.com",
+            "О нас",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information,
+        MessageBoxDefaultButton.Button1,
+        MessageBoxOptions.DefaultDesktopOnly);
+        }
+
+        private void оКалькулятореToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            {
+                MessageBox.Show(
+                "Калькулятор Интегралов позволяет вычислять определенные интегралы и рисовать графики " +
+                "— совершенно бесплатно!\n\n" +
+                "Наш Калькулятор позволяет проверить решение Вашего определенного интеграла, Интерактивные " +
+                "графики помогут представить и лучше понять функции интегралов.\n\n" +
+                "Чтобы узнать больше о том как пользоваться Калькулятором Интегралов, загляните в раздел \"Справка\"",
+                "О калькуляторе",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information,
+            MessageBoxDefaultButton.Button1,
+            MessageBoxOptions.DefaultDesktopOnly);
+            }
+        }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            {
+                MessageBox.Show(
+                "Введите функцию, которую вы хотите проинтегрировать в Калькулятор Интегралов. " +
+                "Не вводите \"f(x) = \" часть и дифференциал \"dx\"! Затем расставьте пределы интегрирования.\n" +
+                "После того как Вы закончили вводить вашу функцию, нажмите \"=\" и Калькулятор Интегралов выдаст результат.",
+                "Справка",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information,
+            MessageBoxDefaultButton.Button1,
+            MessageBoxOptions.DefaultDesktopOnly);
+            }
+        }
     }
 }
