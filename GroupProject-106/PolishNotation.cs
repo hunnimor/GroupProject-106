@@ -81,7 +81,7 @@ namespace GroupProject_106
             }
             return arr;
         }
-        private byte GetPriority(string s)
+        public byte GetPriority(string s)
         {
             switch (s)
             {
