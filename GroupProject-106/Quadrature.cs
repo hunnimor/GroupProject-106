@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace GroupProject_106
 {
-    class Quadrature
+    public class Quadrature
     {
         private string function;
         public Quadrature(string func) {
