@@ -12,7 +12,7 @@ namespace GroupProject_106
         }
         private List<string> operators;
         private List<string> standart_operators =
-            new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "cos", "sin", "tg", "ctg", "ln", "log", "sqrt", "arcsin", "arccos", "arctg", "arcctg"});
+            new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "cos", "sin", "tg", "ctg", "ln", "log", "sqrt"});
 
         public List<string> Separate(string input, double x)
         {
@@ -65,9 +65,11 @@ namespace GroupProject_106
             Dictionary<string, string> constanti = new Dictionary<string, string>()
             {
                 {"E", (Math.E).ToString()},
+                {"-E", '-'+(Math.E).ToString()},
                 {"Pi", (Math.PI).ToString()},
+                {"-Pi", '-'+(Math.PI).ToString()},
                 {"x",  x.ToString()},
-                {"-x", '-'+x.ToString()}
+                {"-x", x <= 0 ? Math.Abs(x).ToString() : ('-'+x.ToString())}
             };
             foreach (var c in constanti)
             {
@@ -102,10 +104,6 @@ namespace GroupProject_106
                 case "ln":
                 case "log":
                 case "sqrt":
-                case "arcsin":
-                case "arccos":
-                case "arctg":
-                case "arcctg":
                     return 3;
                 default:
                     return 4;

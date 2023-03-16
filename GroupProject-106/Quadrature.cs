@@ -26,7 +26,6 @@ namespace GroupProject_106
         {
             PostfixNotationExpression c = new PostfixNotationExpression();
             return c.result(function, x);
-            //return 1 / x;
         }
         public double __restart(double x0, double x1, int nseg0, bool reset_calls = true)
         {
