@@ -20,7 +20,8 @@ namespace GroupProject_106
                 Quadrature x = new Quadrature(textBoxIntegral.Text);
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
-                textBoxResult.Text = x.romberg(min, max, 0.01, 4).ToString();
+                Quadrature integr = new Quadrature(textBoxIntegral.Text);
+                textBoxResult.Text = integr.romberg(min, max, 0.01, 1, 4).ToString();
                 sw.Stop();
                 textBoxTime.Text = sw.ElapsedMilliseconds.ToString();
                 button1.Visible = true;

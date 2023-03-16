@@ -51,7 +51,8 @@
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(949, 944);
+            ClientSize = new Size(574, 529);
+            ControlBox = false;
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(6, 8, 6, 8);

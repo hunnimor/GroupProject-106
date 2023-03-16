@@ -14,8 +14,8 @@ namespace GroupProject_106
     public partial class Form3 : Form
     {
         Bitmap picture;
-        private int height = 900;
-        private int width = 900;
+        private int height = 500;
+        private int width = 500;
         private double min;
         private double max;
         private string function_text;
