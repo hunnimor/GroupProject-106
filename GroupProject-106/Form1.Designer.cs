@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel2 = new Panel();
+            button1 = new Button();
             textBoxTime = new TextBox();
             textBoxResult = new TextBox();
             textBox8 = new TextBox();
@@ -65,6 +66,7 @@
             оНасToolStripMenuItem = new ToolStripMenuItem();
             оКалькулятореToolStripMenuItem = new ToolStripMenuItem();
             справкаToolStripMenuItem = new ToolStripMenuItem();
+            анекдотПроИнтегралToolStripMenuItem = new ToolStripMenuItem();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
@@ -76,20 +78,36 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(button1);
             panel2.Controls.Add(textBoxTime);
             panel2.Controls.Add(textBoxResult);
             panel2.Controls.Add(textBox8);
             panel2.Controls.Add(textBox7);
             panel2.Controls.Add(textBox5);
-            panel2.Location = new Point(28, 450);
+            panel2.Location = new Point(28, 417);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1509, 286);
+            panel2.Size = new Size(1509, 218);
             panel2.TabIndex = 11;
             panel2.Paint += panel2_Paint;
+            // 
+            // button1
+            // 
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Tahoma", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(798, 41);
+            button1.Name = "button1";
+            button1.Size = new Size(639, 142);
+            button1.TabIndex = 5;
+            button1.Text = "Нарисовать график";
+            button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
+            button1.Click += button1_Click;
             // 
             // textBoxTime
             // 
             textBoxTime.BackColor = Color.White;
+            textBoxTime.BorderStyle = BorderStyle.FixedSingle;
             textBoxTime.Location = new Point(336, 144);
             textBoxTime.Name = "textBoxTime";
             textBoxTime.ReadOnly = true;
@@ -99,6 +117,7 @@
             // textBoxResult
             // 
             textBoxResult.BackColor = Color.White;
+            textBoxResult.BorderStyle = BorderStyle.FixedSingle;
             textBoxResult.Location = new Point(130, 98);
             textBoxResult.Name = "textBoxResult";
             textBoxResult.ReadOnly = true;
@@ -146,6 +165,7 @@
             // 
             panel1.BackColor = Color.White;
             panel1.BackgroundImageLayout = ImageLayout.None;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(textBoxIntegral);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(textBox6);
@@ -157,18 +177,20 @@
             panel1.Location = new Point(28, 57);
             panel1.Margin = new Padding(6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1509, 368);
+            panel1.Size = new Size(1509, 337);
             panel1.TabIndex = 10;
             // 
             // textBoxIntegral
             // 
             textBoxIntegral.BackColor = SystemColors.Window;
+            textBoxIntegral.BorderStyle = BorderStyle.FixedSingle;
             textBoxIntegral.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxIntegral.Location = new Point(102, 163);
             textBoxIntegral.Margin = new Padding(3, 2, 3, 2);
             textBoxIntegral.Name = "textBoxIntegral";
             textBoxIntegral.Size = new Size(1200, 78);
             textBoxIntegral.TabIndex = 6;
+            textBoxIntegral.TextChanged += textBoxIntegral_TextChanged;
             // 
             // panel4
             // 
@@ -451,7 +473,7 @@
             // 
             buttonResult.BackColor = Color.White;
             buttonResult.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonResult.FlatStyle = FlatStyle.System;
+            buttonResult.FlatStyle = FlatStyle.Popup;
             buttonResult.Font = new Font("Tahoma", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             buttonResult.ForeColor = SystemColors.ActiveCaptionText;
             buttonResult.ImageAlign = ContentAlignment.TopLeft;
@@ -496,6 +518,7 @@
             textBoxMax.Name = "textBoxMax";
             textBoxMax.Size = new Size(67, 39);
             textBoxMax.TabIndex = 4;
+            textBoxMax.TextChanged += textBoxMax_TextChanged;
             textBoxMax.KeyPress += textBoxMax_KeyPress;
             // 
             // textBoxMin
@@ -506,14 +529,15 @@
             textBoxMin.Name = "textBoxMin";
             textBoxMin.Size = new Size(67, 39);
             textBoxMin.TabIndex = 5;
+            textBoxMin.TextChanged += textBoxMin_TextChanged;
             textBoxMin.KeyPress += textBoxMin_KeyPress;
             // 
             // panel3
             // 
             panel3.BackColor = Color.WhiteSmoke;
             panel3.Controls.Add(panel1);
-            panel3.Controls.Add(panel2);
             panel3.Controls.Add(menuStrip1);
+            panel3.Controls.Add(panel2);
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(5);
             panel3.Name = "panel3";
@@ -523,7 +547,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { оНасToolStripMenuItem, оКалькулятореToolStripMenuItem, справкаToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { оНасToolStripMenuItem, оКалькулятореToolStripMenuItem, справкаToolStripMenuItem, анекдотПроИнтегралToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1921, 40);
@@ -551,12 +575,19 @@
             справкаToolStripMenuItem.Text = "Справка";
             справкаToolStripMenuItem.Click += справкаToolStripMenuItem_Click;
             // 
+            // анекдотПроИнтегралToolStripMenuItem
+            // 
+            анекдотПроИнтегралToolStripMenuItem.Name = "анекдотПроИнтегралToolStripMenuItem";
+            анекдотПроИнтегралToolStripMenuItem.Size = new Size(280, 36);
+            анекдотПроИнтегралToolStripMenuItem.Text = "Анекдот про интеграл";
+            анекдотПроИнтегралToolStripMenuItem.Click += анекдотПроИнтегралToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1564, 758);
+            ClientSize = new Size(1564, 659);
             Controls.Add(panel3);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
@@ -617,5 +648,8 @@
         private ToolStripMenuItem оНасToolStripMenuItem;
         private ToolStripMenuItem оКалькулятореToolStripMenuItem;
         private ToolStripMenuItem справкаToolStripMenuItem;
+        private ToolStripMenuItem анекдотПроИнтегралToolStripMenuItem;
+        private Button button1;
+        private DataGridViewTextBoxColumn zna4;
     }
 }
