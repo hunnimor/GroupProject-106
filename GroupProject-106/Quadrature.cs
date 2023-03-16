@@ -14,18 +14,21 @@ namespace GroupProject_106
 {
     class Quadrature
     {
-        private string function;
-        public Quadrature(string func) {
-            function = func;
-        }
         //Базовые определения для квадратурных формул
         double __sum = 0.0;
         int __nseg = 1;  // число отрезков разбиения
         int __ncalls = 0; // считает число вызовов интегрируемой функции
+        private string funcsia;
+
+        public Quadrature(string func)
+        {
+            this.funcsia = func;
+        }
+
         public double func(double x)
         {
             PostfixNotationExpression c = new PostfixNotationExpression();
-            return c.result(function, x);
+            return c.result(funcsia, x);
         }
         public double __restart(double x0, double x1, int nseg0, bool reset_calls = true)
         {
@@ -66,7 +69,7 @@ namespace GroupProject_106
         }
 
 
-        public double romberg(double x0, double x1, double rtol = 1e-10, int nseg0 = 1, int maxcol = 5, bool reset_calls = true)
+        public double romberg(double x0, double x1, double rtol = 0.5, int nseg0 = 1, int maxcol = 5, bool reset_calls = true)
         {
             // Интегрирование методом Ромберга
             // nseg0 - начальное число отрезков разбиения
@@ -111,6 +114,7 @@ namespace GroupProject_106
                 {
                     error_est = Math.Abs(ans - Itable[i - 1][i - 1]);
                 }
+                Console.WriteLine(ans);
             }
             Console.WriteLine($"Total function calls: {this.__ncalls}");
             return ans;

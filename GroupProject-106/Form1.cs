@@ -18,8 +18,9 @@ namespace GroupProject_106
                 double min = Convert.ToDouble(textBoxMin.Text);
                 double max = Convert.ToDouble(textBoxMax.Text);
                 Quadrature x = new Quadrature(textBoxIntegral.Text);
-                Stopwatch sw = Stopwatch.StartNew();
-                textBoxResult.Text = x.romberg(min, max, 0.01, 1).ToString();
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                textBoxResult.Text = x.romberg(min, max, 0.01, 4).ToString();
                 sw.Stop();
                 textBoxTime.Text = sw.ElapsedMilliseconds.ToString();
                 button1.Visible = true;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace GroupProject_106
+﻿namespace GroupProject_106
 {
     public class PostfixNotationExpression
     {
@@ -11,35 +8,26 @@ namespace GroupProject_106
 
         }
         private List<string> operators;
-        private List<string> standart_operators =
-            new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "cos", "sin", "tg", "ctg", "ln", "log", "sqrt"});
+        private List<string> standart_operators = new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "cos", "sin", "tg", "ctg", "ln", "log", "sqrt" });
 
         public List<string> Separate(string input, double x)
         {
+
             List<string> arr = new List<string>();
             int pos = 0;
             while (pos < input.Length)
             {
                 string s = string.Empty;
-                // dobavlenie 4isla s unarnim minusom
-                if (input[pos] == '-')
-                {
-                    if (pos == 0)
-                    {
-                        for (int i = pos; i < input.Length &&
-                                (Char.IsLetter(input[i]) || input[i] == '-' || Char.IsDigit(input[i])); i++)
-                            s += input[i];
-                    }
-                    else if (input[pos - 1] == '(')
-                    {
-                        for (int i = pos; i < input.Length &&
-                                (Char.IsLetter(input[i]) || input[i] == '-' || Char.IsDigit(input[i])); i++)
-                            s += input[i];
-                    }
-                }
-                else if (standart_operators.Contains(input[pos].ToString()))
+                if (standart_operators.Contains(input[pos].ToString()) && pos != 0 && input[pos - 1] != '(')
                 {
                     s += input[pos];
+                }
+                else if (input[pos] == '-')
+                {
+                    s += input[pos];
+                    for (int i = pos + 1; i < input.Length &&
+                            (Char.IsLetter(input[i]) || Char.IsDigit(input[i])); i++)
+                        s += input[i];
                 }
                 else if (!standart_operators.Contains(input[pos].ToString()))
                 {
@@ -157,6 +145,7 @@ namespace GroupProject_106
             Stack<string> stack = new Stack<string>();
             Queue<string> queue = new Queue<string>(ConvertToPostfixNotation(input, x));
             string str = queue.Dequeue();
+
             while (queue.Count >= 0)
             {
                 if (!operators.Contains(str))
@@ -199,9 +188,8 @@ namespace GroupProject_106
                                     double a = Convert.ToDouble(stack.Pop());
                                     double b = Convert.ToDouble(stack.Pop());
                                     if (a == 0) summ = 0;
-                                    else summ = b / a;
+                                    if (a != 0) summ = b / a;
                                     break;
-                                   
                                 }
                             case "^":
                                 {
@@ -253,43 +241,13 @@ namespace GroupProject_106
                                     summ = Math.Sqrt(a);
                                     break;
                                 }
-                            case "arcsin":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Math.Asin(a);
-                                    break;
-                                }
-                            case "arccos":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Math.Acos(a);
-                                    break;
-                                }
-                            case "arctg":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Math.Atan(a);
-                                    break;
-                                }
-                            case "arcctg":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    if (a >= 0)
-                                    {
-                                        return Math.Atan(1 / Math.Sqrt(1 + Math.Pow(x, 2)));
-                                    }
-                                    else
-                                    {
-                                        return Math.PI-Math.Atan(1 / Math.Sqrt(1 + Math.Pow(x, 2)));
-                                    }
-                                    break;
-                                }
                         }
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine("ERROR!");
                         Console.WriteLine(ex);
+                        Console.ReadLine();
                     }
                     stack.Push(summ.ToString());
                     if (queue.Count > 0)
@@ -301,5 +259,6 @@ namespace GroupProject_106
             }
             return Convert.ToDouble(stack.Pop());
         }
+
     }
 }
