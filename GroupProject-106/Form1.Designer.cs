@@ -67,6 +67,7 @@
             оКалькулятореToolStripMenuItem = new ToolStripMenuItem();
             справкаToolStripMenuItem = new ToolStripMenuItem();
             анекдотПроИнтегралToolStripMenuItem = new ToolStripMenuItem();
+            неНажиматьToolStripMenuItem = new ToolStripMenuItem();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
@@ -246,6 +247,7 @@
             button17.TabIndex = 25;
             button17.Text = "Add Const";
             button17.UseVisualStyleBackColor = false;
+            button17.Click += button17_Click;
             // 
             // buttonCLR
             // 
@@ -547,40 +549,47 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { оНасToolStripMenuItem, оКалькулятореToolStripMenuItem, справкаToolStripMenuItem, анекдотПроИнтегралToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { оНасToolStripMenuItem, оКалькулятореToolStripMenuItem, справкаToolStripMenuItem, анекдотПроИнтегралToolStripMenuItem, неНажиматьToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1921, 40);
+            menuStrip1.Size = new Size(1921, 42);
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
             // 
             // оНасToolStripMenuItem
             // 
             оНасToolStripMenuItem.Name = "оНасToolStripMenuItem";
-            оНасToolStripMenuItem.Size = new Size(96, 36);
+            оНасToolStripMenuItem.Size = new Size(96, 38);
             оНасToolStripMenuItem.Text = "О нас";
             оНасToolStripMenuItem.Click += оНасToolStripMenuItem_Click;
             // 
             // оКалькулятореToolStripMenuItem
             // 
             оКалькулятореToolStripMenuItem.Name = "оКалькулятореToolStripMenuItem";
-            оКалькулятореToolStripMenuItem.Size = new Size(208, 36);
+            оКалькулятореToolStripMenuItem.Size = new Size(208, 38);
             оКалькулятореToolStripMenuItem.Text = "О калькуляторе";
             оКалькулятореToolStripMenuItem.Click += оКалькулятореToolStripMenuItem_Click;
             // 
             // справкаToolStripMenuItem
             // 
             справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            справкаToolStripMenuItem.Size = new Size(126, 36);
+            справкаToolStripMenuItem.Size = new Size(126, 38);
             справкаToolStripMenuItem.Text = "Справка";
             справкаToolStripMenuItem.Click += справкаToolStripMenuItem_Click;
             // 
             // анекдотПроИнтегралToolStripMenuItem
             // 
             анекдотПроИнтегралToolStripMenuItem.Name = "анекдотПроИнтегралToolStripMenuItem";
-            анекдотПроИнтегралToolStripMenuItem.Size = new Size(280, 36);
+            анекдотПроИнтегралToolStripMenuItem.Size = new Size(280, 38);
             анекдотПроИнтегралToolStripMenuItem.Text = "Анекдот про интеграл";
             анекдотПроИнтегралToolStripMenuItem.Click += анекдотПроИнтегралToolStripMenuItem_Click;
+            // 
+            // неНажиматьToolStripMenuItem
+            // 
+            неНажиматьToolStripMenuItem.Name = "неНажиматьToolStripMenuItem";
+            неНажиматьToolStripMenuItem.Size = new Size(208, 38);
+            неНажиматьToolStripMenuItem.Text = "Не нажимать!!!!";
+            неНажиматьToolStripMenuItem.Click += неНажиматьToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -651,5 +660,6 @@
         private ToolStripMenuItem анекдотПроИнтегралToolStripMenuItem;
         private Button button1;
         private DataGridViewTextBoxColumn zna4;
+        private ToolStripMenuItem неНажиматьToolStripMenuItem;
     }
 }

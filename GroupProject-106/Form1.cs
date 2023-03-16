@@ -148,9 +148,7 @@ namespace GroupProject_106
             "mail: mirzagitv03@gmail.com",
             "О нас",
         MessageBoxButtons.OK,
-        MessageBoxIcon.Information,
-        MessageBoxDefaultButton.Button1,
-        MessageBoxOptions.DefaultDesktopOnly);
+        MessageBoxIcon.Information);
         }
 
         private void оКалькулятореToolStripMenuItem_Click(object sender, EventArgs e)
@@ -164,9 +162,7 @@ namespace GroupProject_106
                 "Чтобы узнать больше о том как пользоваться Калькулятором Интегралов, загляните в раздел \"Справка\"",
                 "О калькуляторе",
             MessageBoxButtons.OK,
-            MessageBoxIcon.Information,
-            MessageBoxDefaultButton.Button1,
-            MessageBoxOptions.DefaultDesktopOnly);
+            MessageBoxIcon.Information);
             }
         }
 
@@ -179,9 +175,7 @@ namespace GroupProject_106
                 "После того как Вы закончили вводить вашу функцию, нажмите \"=\" и Калькулятор Интегралов выдаст результат.",
                 "Справка",
             MessageBoxButtons.OK,
-            MessageBoxIcon.Information,
-            MessageBoxDefaultButton.Button1,
-            MessageBoxOptions.DefaultDesktopOnly);
+            MessageBoxIcon.Information);
             }
         }
 
@@ -198,9 +192,7 @@ namespace GroupProject_106
             "достал шляпу!",
             "Анекдот про интеграл",
             MessageBoxButtons.OK,
-            MessageBoxIcon.Information,
-            MessageBoxDefaultButton.Button1,
-            MessageBoxOptions.DefaultDesktopOnly);
+            MessageBoxIcon.Information);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -237,8 +229,8 @@ namespace GroupProject_106
             }
 
             // проверка на корректность ввода знаков оперции
-            List<string> listConstantSign = new List<string>() { "*", "-", "+", "^"};
-            List<string> listConstantFunctions = new List<string>() { "arcsin", "arccos", "arctg", "arcctg", "sqrt", "cos", "sin", "tg", "ctg", "ln", "log"};
+            List<string> listConstantSign = new List<string>() { "*", "-", "+", "^" };
+            List<string> listConstantFunctions = new List<string>() { "arcsin", "arccos", "arctg", "arcctg", "sqrt", "cos", "sin", "tg", "ctg", "ln", "log" };
             string checkToSign = text;
             for (int i = 0; i < listConstantSign.Count; i++)
             {
@@ -300,7 +292,18 @@ namespace GroupProject_106
 
         private void textBoxMin_TextChanged(object sender, EventArgs e)
         {
-            button1.Visible=false;
+            button1.Visible = false;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void неНажиматьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var myForm = new Form4();
+            myForm.Show();
         }
     }
 }
