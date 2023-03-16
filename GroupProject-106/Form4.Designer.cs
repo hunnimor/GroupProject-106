@@ -37,7 +37,7 @@
             // 
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-3, 0);
+            pictureBox1.Location = new Point(130, 114);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(503, 374);
             pictureBox1.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(498, 373);
+            ClientSize = new Size(821, 644);
             Controls.Add(pictureBox1);
             MaximizeBox = false;
             Name = "Form4";

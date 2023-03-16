@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace GroupProject_106
 {
-    class Quadrature
+    public class Quadrature
     {
         //Базовые определения для квадратурных формул
         double __sum = 0.0;
