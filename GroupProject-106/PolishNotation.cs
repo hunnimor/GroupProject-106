@@ -148,112 +148,119 @@
 
             while (queue.Count >= 0)
             {
-                if (!operators.Contains(str))
+                try
                 {
-                    stack.Push(str);
-                    str = queue.Dequeue();
-                }
-                else
-                {
-                    double summ = 0;
-                    try
+                    if (!operators.Contains(str))
                     {
-
-                        switch (str)
+                        stack.Push(str);
+                        str = queue.Dequeue();
+                    }
+                    else
+                    {
+                        double summ = 0;
+                        try
                         {
 
-                            case "+":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    double b = Convert.ToDouble(stack.Pop());
-                                    summ = a + b;
-                                    break;
-                                }
-                            case "-":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    double b = Convert.ToDouble(stack.Pop());
-                                    summ = b - a;
-                                    break;
-                                }
-                            case "*":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    double b = Convert.ToDouble(stack.Pop());
-                                    summ = b * a;
-                                    break;
-                                }
-                            case "/":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    double b = Convert.ToDouble(stack.Pop());
-                                    if (a == 0) summ = 0;
-                                    if (a != 0) summ = b / a;
-                                    break;
-                                }
-                            case "^":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    double b = Convert.ToDouble(stack.Pop());
-                                    summ = Math.Pow(b, a);
-                                    break;
-                                }
-                            case "cos":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Convert.ToDouble(Math.Cos(a));
-                                    break;
-                                }
-                            case "sin":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Convert.ToDouble(Math.Sin(a));
-                                    break;
-                                }
-                            case "tg":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Convert.ToDouble(Math.Tan(a));
-                                    break;
-                                }
-                            case "ctg":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Convert.ToDouble(1 / Math.Tan(a));
-                                    break;
-                                }
-                            case "ln":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Convert.ToDouble(Math.Log(a));
-                                    break;
-                                }
-                            case "log":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    double b = Convert.ToDouble(stack.Pop());
-                                    summ = Math.Log(a, b);
-                                    break;
-                                }
-                            case "sqrt":
-                                {
-                                    double a = Convert.ToDouble(stack.Pop());
-                                    summ = Math.Sqrt(a);
-                                    break;
-                                }
+                            switch (str)
+                            {
+
+                                case "+":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        double b = Convert.ToDouble(stack.Pop());
+                                        summ = a + b;
+                                        break;
+                                    }
+                                case "-":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        double b = Convert.ToDouble(stack.Pop());
+                                        summ = b - a;
+                                        break;
+                                    }
+                                case "*":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        double b = Convert.ToDouble(stack.Pop());
+                                        summ = b * a;
+                                        break;
+                                    }
+                                case "/":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        double b = Convert.ToDouble(stack.Pop());
+                                        if (a == 0) summ = 0;
+                                        if (a != 0) summ = b / a;
+                                        break;
+                                    }
+                                case "^":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        double b = Convert.ToDouble(stack.Pop());
+                                        summ = Math.Pow(b, a);
+                                        break;
+                                    }
+                                case "cos":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        summ = Convert.ToDouble(Math.Cos(a));
+                                        break;
+                                    }
+                                case "sin":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        summ = Convert.ToDouble(Math.Sin(a));
+                                        break;
+                                    }
+                                case "tg":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        summ = Convert.ToDouble(Math.Tan(a));
+                                        break;
+                                    }
+                                case "ctg":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        summ = Convert.ToDouble(1 / Math.Tan(a));
+                                        break;
+                                    }
+                                case "ln":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        summ = Convert.ToDouble(Math.Log(a));
+                                        break;
+                                    }
+                                case "log":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        double b = Convert.ToDouble(stack.Pop());
+                                        summ = Math.Log(a, b);
+                                        break;
+                                    }
+                                case "sqrt":
+                                    {
+                                        double a = Convert.ToDouble(stack.Pop());
+                                        summ = Math.Sqrt(a);
+                                        break;
+                                    }
+                            }
                         }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("ERROR!");
+                            Console.WriteLine(ex);
+                            Console.ReadLine();
+                        }
+                        stack.Push(summ.ToString());
+                        if (queue.Count > 0)
+                            str = queue.Dequeue();
+                        else
+                            break;
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("ERROR!");
-                        Console.WriteLine(ex);
-                        Console.ReadLine();
-                    }
-                    stack.Push(summ.ToString());
-                    if (queue.Count > 0)
-                        str = queue.Dequeue();
-                    else
-                        break;
+                }
+                catch (Exception ex)
+                {
+                    return Double.NaN;
                 }
 
             }

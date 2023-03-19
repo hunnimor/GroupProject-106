@@ -261,24 +261,73 @@ namespace GroupProject_106
                 correct = false;
             }
 
+            bool correctDigits = true;
+            for(int i = 0;i < text.Length;i++)
+            {
+                if (i != text.Length -1 && Char.IsDigit(text[i]) && text[i + 1].ToString() == "x")
+                {
+                    correctDigits = false;
+                    correct = false;
+                    break;
+                }
+                if (i != 0 && Char.IsDigit(text[i]) && text[i - 1].ToString() == "x")
+                {
+                    correctDigits = false;
+                    correct = false;
+                    break;
+                }
+                if(i != 0 && Char.IsDigit(text[i]) && (Char.IsLetter(text[i - 1]) || text[i - 1].ToString() == ")" || text[i - 1].ToString() == "("))
+                {
+                    correctDigits = false;
+                    correct = false;
+                    break;
+                }
+                if (i != text.Length - 1 && Char.IsDigit(text[i]) && (Char.IsLetter(text[i + 1]) || text[i + 1].ToString() == ")" || text[i + 1].ToString() == "("))
+                {
+                    correctDigits = false;
+                    correct = false;
+                    break;
+                }
+            }
+            if (!correctDigits)
+            {
+                MessageBox.Show(
+                    "Неправильно введены знаки оперций",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+            bool correctBreakets = true;
             //проверка на кореектность ввода функций и переменных
             foreach (string s in listConstantFunctions)
             {
                 string[] intermediateCheck = checkToSign.Split("@");
                 foreach (string s2 in intermediateCheck)
                 {
+                    //(s2[s2.IndexOf(s) - 1].ToString() != "(" || s2[s2.IndexOf(s) + s.Length].ToString() != "(")
                     if (s2.IndexOf(s) != 0 && s2.IndexOf(s) != -1 && s2[s2.IndexOf(s) - 1].ToString() != "(")
                     {
-                        MessageBox.Show(
-                        "Вы пропустили знак операции между выражениями!",
-                        "Ошибка",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                        correctBreakets = false;
                         correct = false;
-                        continue;
+                        break;
+                    }
+                    if (s2.IndexOf(s) != -1 && s2[s2.IndexOf(s) + s.Length].ToString() != "(")
+                    {
+                        correctBreakets = false;
+                        correct = false; 
+                        break;
                     }
                 }
             }
+            if(!correctBreakets)
+                {
+                    MessageBox.Show(
+                        "Неправильно введены скобки!",
+                        "Ошибка",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             return correct;
         }
 
