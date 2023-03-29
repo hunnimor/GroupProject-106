@@ -1,32 +1,71 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
+using System.Reflection.Metadata;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace GroupProject_106
 {
+    public delegate void MyDelegate(string data); //меню
+    public delegate void DHistory(string his);
+    //public delegate void DConst(BindingList<string, double> constant);
+
     public partial class Form1 : Form
     {
+        public BindingList<ConstantValues> constants = new BindingList<ConstantValues>();
+
+        public string result;
+        public string time;
+
+        List<string> inputs = new List<string>();
+
+        public BindingList<ConstantValues> empty = new BindingList<ConstantValues>();
         public Form1()
         {
             InitializeComponent();
+
+            button5.BackColor = Color.White;
+            button5.ForeColor = Color.Green;
+            button5.FlatAppearance.BorderSize = 3;
+            button5.FlatAppearance.BorderColor = Color.HotPink;
+            Menu menu = new Menu(new MyDelegate(func));
+            addUserControl(menu);
+        }
+        /*public void co(BindingList<string, double> param)
+        {
+            constants = param;
+        }*/
+        public void func(string param)
+        {
+            if (param == "") { textBoxMin.Text = ""; textBoxMax.Text = ""; textBoxIntegral.Text = ""; }
+            else if (param == "-1")
+            {
+                string[] arr = textBoxIntegral.Lines.ToArray();
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i] = arr[i].Remove(arr.Length + 1, 1);
+                }
+                textBoxIntegral.Lines = arr;
+            }
+            else textBoxIntegral.Text += param;
+        }
+        public void his(string param)
+        {
+            textBoxIntegral.Text = param;
+        }
+        private void addUserControl(UserControl userControl)
+        {
+            userControl.Dock = DockStyle.Fill;
+            panel10.Controls.Clear();
+            panel10.Controls.Add(userControl);
+            userControl.BringToFront();
         }
 
-        private void buttonResult_Click(object sender, EventArgs e)
-        {
-            if (proverki_vvoda(textBoxIntegral.Text, textBoxMin.Text, textBoxMax.Text))
-            {
-                double min = Convert.ToDouble(textBoxMin.Text);
-                double max = Convert.ToDouble(textBoxMax.Text);
-                Quadrature x = new Quadrature(textBoxIntegral.Text);
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                Quadrature integr = new Quadrature(textBoxIntegral.Text);
-                textBoxResult.Text = integr.romberg(min, max, 0.01, 1, 4).ToString();
-                sw.Stop();
-                textBoxTime.Text = sw.ElapsedMilliseconds.ToString();
-                button1.Visible = true;
-            }
-        }
 
         private void textBoxMax_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -44,84 +83,6 @@ namespace GroupProject_106
             {
                 e.Handled = true;
             }
-        }
-
-        private void buttonCLR_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text = "";
-            textBoxMin.Text = "";
-            textBoxMax.Text = "";
-            button1.Visible = false;
-        }
-
-        private void buttonPlus_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += '+';
-        }
-
-        private void buttonMinus_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += '-';
-        }
-
-        private void buttonUmnoj_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += '*';
-        }
-
-        private void buttonDel_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += '/';
-        }
-
-        private void buttonStepen_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += '^';
-        }
-
-        private void buttonSqrt_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "sqrt(";
-        }
-
-        private void buttonCos_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "cos(";
-        }
-
-        private void buttonSin_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "sin(";
-        }
-
-        private void buttonTg_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "tg(";
-        }
-
-        private void buttonCtg_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "ctg(";
-        }
-
-        private void buttonLog_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "log(";
-        }
-
-        private void buttonLn_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "ln(";
-        }
-
-        private void buttonPi_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "Pi";
-        }
-
-        private void buttonE_Click(object sender, EventArgs e)
-        {
-            textBoxIntegral.Text += "E";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -197,13 +158,7 @@ namespace GroupProject_106
             MessageBoxIcon.Information);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var myForm = new Form3(textBoxIntegral.Text, textBoxMin.Text, textBoxMax.Text);
-            myForm.Show();
-        }
-
-        public static bool proverki_vvoda(string text, string min, string max)
+        public bool proverki_vvoda(string text, string min, string max)
         {
             bool correct = true;
             // проверки пределов
@@ -241,7 +196,7 @@ namespace GroupProject_106
             if (checkToSign.Contains("@@"))
             {
                 MessageBox.Show(
-                "Вы пропустили знак операции между выражениями!",
+                "Два знака операции не могут стоять рядом друг с другом!",
                 "Ошибка",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
@@ -260,11 +215,11 @@ namespace GroupProject_106
                         MessageBoxIcon.Error);
                 correct = false;
             }
-
+            /*
             bool correctDigits = true;
-            for(int i = 0;i < text.Length;i++)
+            for (int i = 0; i < text.Length; i++)
             {
-                if (i != text.Length -1 && Char.IsDigit(text[i]) && text[i + 1].ToString() == "x")
+                if (i != text.Length - 1 && Char.IsDigit(text[i]) && text[i + 1].ToString() == "x")
                 {
                     correctDigits = false;
                     correct = false;
@@ -276,7 +231,7 @@ namespace GroupProject_106
                     correct = false;
                     break;
                 }
-                if(i != 0 && Char.IsDigit(text[i]) && (Char.IsLetter(text[i - 1]) || text[i - 1].ToString() == ")" || text[i - 1].ToString() == "("))
+                if (i != 0 && Char.IsDigit(text[i]) && (Char.IsLetter(text[i - 1]) || text[i - 1].ToString() == ")" || text[i - 1].ToString() == "("))
                 {
                     correctDigits = false;
                     correct = false;
@@ -291,15 +246,21 @@ namespace GroupProject_106
             }
             if (!correctDigits)
             {
+
                 MessageBox.Show(
                     "Неправильно введены знаки оперций",
                     "Ошибка",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            */
 
             bool correctBreakets = true;
+            bool ch = true;
             //проверка на кореектность ввода функций и переменных
+
+
+            //проверка на скобки
             foreach (string s in listConstantFunctions)
             {
                 string[] intermediateCheck = checkToSign.Split("@");
@@ -315,35 +276,111 @@ namespace GroupProject_106
                     if (s2.IndexOf(s) != -1 && s2[s2.IndexOf(s) + s.Length].ToString() != "(")
                     {
                         correctBreakets = false;
-                        correct = false; 
+                        correct = false;
                         break;
                     }
                 }
             }
-            if(!correctBreakets)
-                {
-                    MessageBox.Show(
-                        "Неправильно введены скобки!",
-                        "Ошибка",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+            if (!correctBreakets)
+            {
+
+                MessageBox.Show(
+                    "Неправильно введены скобки!",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+
+            }
+            if (listConstantSign.Contains(text[0].ToString()))
+            {
+                MessageBox.Show(
+                    "Выражение не может начинаться с операции!",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                correct = false;
+            }
+            else if (listConstantSign.Contains(text[text.Length - 1].ToString()))
+            {
+                MessageBox.Show(
+                    "Выражение не может заканчиваться знаком операции!",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                correct = false;
+            }
             return correct;
+        }
+        private bool proverki_const(string text)
+        {
+            text += "+0";
+            bool flag = true;
+            string newconst = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                if ((char)text[i] != 'x' &&
+                    (((char)text[i] >= 'a' && (char)text[i] <= 'z')
+                    || ((char)text[i] >= 'A' && (char)text[i] <= 'Z')))
+                {
+                    for (int j = i; j < text.Length; j++)
+                    {
+                        if ((char)text[j] != '+' && (char)text[j] != '-'
+                            && (char)text[j] != '*' && (char)text[j] != '/' && (char)text[j] != '^')
+                        {
+                            newconst += (text[j]);
+                        }
+                        else { constants.Add(new() { Name = newconst, Value = 0.0 }); i += newconst.Length; newconst = ""; break; }
+                    }
+                }
+            }
+            if (constants != null)
+            {
+                for (int i = 0; i < constants.Count; i++)
+                {
+                    if (i < constants.Count && constants[i].Name.Length > 3)
+                    {
+                        if ((constants[i].Name[0] == 's' && constants[i].Name[1] == 'i' && constants[i].Name[2] == 'n') ||
+                             (constants[i].Name[0] == 'c' && constants[i].Name[1] == 'o' && constants[i].Name[2] == 's') ||
+                             (constants[i].Name[0] == 'c' && constants[i].Name[1] == 't' && constants[i].Name[2] == 'g') ||
+                             (constants[i].Name[0] == 'l' && constants[i].Name[1] == 'o' && constants[i].Name[2] == 'g'))
+                        { constants.RemoveAt(i); }
+                    }
+                    if (i < constants.Count && (constants[i].Name.Length > 2))
+                    {
+                        if ((constants[i].Name[0] == 't' && constants[i].Name[1] == 'g') ||
+                            (constants[i].Name[0] == 'l' && constants[i].Name[1] == 'n'))
+                        { constants.RemoveAt(i); }
+                    }
+                }
+                if (constants.Count > 1)
+                {
+                    for (int i = 0; i < constants.Count; i++)
+                    {
+                        for (int j = constants.Count - 1; j >= 0; j--)
+                        {
+                            if (constants[i].Name == constants[j].Name && i != j) constants.Remove(constants[j]);
+                        }
+                    }
+                }
+            }
+            else flag = false;
+            return flag;
         }
 
         private void textBoxIntegral_TextChanged(object sender, EventArgs e)
         {
-            button1.Visible = false;
+            //button1.Visible = false;
         }
 
         private void textBoxMax_TextChanged(object sender, EventArgs e)
         {
-            button1.Visible = false;
+            //button1.Visible = false;
         }
 
         private void textBoxMin_TextChanged(object sender, EventArgs e)
         {
-            button1.Visible = false;
+            //button1.Visible = false;
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -355,6 +392,158 @@ namespace GroupProject_106
         {
             var myForm = new Form4();
             myForm.Show();
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            button6.BackColor = Color.White;
+            button6.ForeColor = Color.Green;
+            button6.FlatAppearance.BorderColor = Color.White;
+            button5.BackColor = Color.White;
+            button5.ForeColor = Color.Green;
+            button5.FlatAppearance.BorderSize = 3;
+            button5.FlatAppearance.BorderColor = Color.HotPink;
+            button7.BackColor = Color.White;
+            button7.ForeColor = Color.Green;
+            button7.FlatAppearance.BorderColor = Color.White;
+            button8.BackColor = Color.White;
+            button8.ForeColor = Color.Green;
+            button8.FlatAppearance.BorderColor = Color.White;
+            panel10.Visible = true;
+            Menu menu = new Menu(new MyDelegate(func));
+            addUserControl(menu);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            button5.BackColor = Color.White;
+            button5.ForeColor = Color.Green;
+            button5.FlatAppearance.BorderColor = Color.White;
+            button7.BackColor = Color.White;
+            button7.ForeColor = Color.Green;
+            button7.FlatAppearance.BorderSize = 3;
+            button7.FlatAppearance.BorderColor = Color.HotPink;
+            button6.BackColor = Color.White;
+            button6.ForeColor = Color.Green;
+            button6.FlatAppearance.BorderColor = Color.White;
+            button8.BackColor = Color.White;
+            button8.ForeColor = Color.Green;
+            button8.FlatAppearance.BorderColor = Color.White;
+            Result res = new Result(result, time, textBoxIntegral.Text, textBoxMin.Text, textBoxMax.Text);
+            addUserControl(res);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            button5.BackColor = Color.White;
+            button5.ForeColor = Color.Green;
+            button5.FlatAppearance.BorderColor = Color.White;
+            button6.BackColor = Color.White;
+            button6.ForeColor = Color.Green;
+            button6.FlatAppearance.BorderSize = 3;
+            button6.FlatAppearance.BorderColor = Color.HotPink;
+            button7.BackColor = Color.White;
+            button7.ForeColor = Color.Green;
+            button7.FlatAppearance.BorderColor = Color.White;
+            button8.BackColor = Color.White;
+            button8.ForeColor = Color.Green;
+            button8.FlatAppearance.BorderColor = Color.White;
+            Const constant = new Const(constants, new ToDic(c));
+            addUserControl(constant);
+
+        }
+        public void c(BindingList<ConstantValues> c) { }
+        private void ResButton_Click(object sender, EventArgs e)
+        {
+            History History = new History(new DHistory(his));
+
+            /*if(proverki_const(textBoxIntegral.Text)) 
+            {
+                Const constform = new Const(constants, new ToDic(c));
+                addUserControl(constform);
+            }*/
+            if (proverki_vvoda(textBoxIntegral.Text, textBoxMin.Text, textBoxMax.Text) && proverki_const(textBoxIntegral.Text))
+            {
+                Const constform = new Const(constants, new ToDic(c));
+                double min = Convert.ToDouble(textBoxMin.Text);
+                double max = Convert.ToDouble(textBoxMax.Text);
+                Quadrature x = new Quadrature(textBoxIntegral.Text);
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                Quadrature integr = new Quadrature(textBoxIntegral.Text);
+                result = integr.romberg(min, max, 0.01, 1, 4).ToString();
+                sw.Stop();
+                time = sw.ElapsedMilliseconds.ToString();
+                Result res = new Result(result, time, textBoxIntegral.Text, textBoxMin.Text, textBoxMax.Text);
+
+                button5.BackColor = Color.White;
+                button5.ForeColor = Color.Green;
+                button5.FlatAppearance.BorderColor = Color.White;
+                button7.BackColor = Color.White;
+                button7.ForeColor = Color.Green;
+                button7.FlatAppearance.BorderSize = 3;
+                button7.FlatAppearance.BorderColor = Color.HotPink;
+                button6.BackColor = Color.White;
+                button6.ForeColor = Color.Green;
+                button6.FlatAppearance.BorderColor = Color.White;
+                button8.BackColor = Color.White;
+                button8.ForeColor = Color.Green;
+                button8.FlatAppearance.BorderColor = Color.White;
+                addUserControl(res);
+                //constants.Clear();
+            }
+
+            inputs.Add(textBoxIntegral.Text);
+            History.inputs = inputs;
+        }
+
+        private void textBoxIntegral_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            button5.BackColor = Color.White;
+            button5.ForeColor = Color.Green;
+            button5.FlatAppearance.BorderColor = Color.White;
+            button8.BackColor = Color.White;
+            button8.ForeColor = Color.Green;
+            button8.FlatAppearance.BorderSize = 3;
+            button8.FlatAppearance.BorderColor = Color.HotPink;
+            button7.BackColor = Color.White;
+            button7.ForeColor = Color.Green;
+            button7.FlatAppearance.BorderColor = Color.White;
+            button6.BackColor = Color.White;
+            button6.ForeColor = Color.Green;
+            button6.FlatAppearance.BorderColor = Color.White;
+            History History = new History(new DHistory(his));
+            History.inputs = inputs;
+            //d(inputs);
+            addUserControl(History);
+
+            //History.Dispose();
+
+        }
+
+        private void неНажиматьToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
